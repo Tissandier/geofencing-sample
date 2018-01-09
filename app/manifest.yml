@@ -1,0 +1,18 @@
+declared-services:
+ GeofenceDatabase:
+ label: cloudantNoSQLDB
+ plan: Shared
+ GeofenceMQLight:
+ label: mqlight
+ plan: standard
+applications:
+- disk_quota: 1024M
+  host: geofencing-sample-et
+  name: geofencing-sample-et
+  command: node app.js
+  path: .
+  domain: mybluemix.net
+  services:
+  - GeofenceDatabase
+  - GeofenceMQLight
+

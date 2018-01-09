@@ -1,0 +1,87 @@
+/**
+ * Licensed Materials - Property of IBM
+ * 5725-I43 (C) Copyright IBM Corp. 2015. All Rights Reserved.
+ * US Government Users Restricted Rights - Use, duplication or
+ * disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+ */
+/**
+ * Source:
+ * https://releaseblueprints.ibm.com/download/attachments/31525942/StyleGuide_ThanosBeta2.pdf
+ * https://releaseblueprints.ibm.com/download/attachments/43589789/Thanos%20Color%20Palette.css
+ * https://git.design.ibm.com/bluemix/bluemix-style-guide/blob/master/styles/components/_bluemix-colors.scss
+ */
+/**
+ * Source:
+ * https://releaseblueprints.ibm.com/download/attachments/43581972/StyleGuide_ThanosBeta2_rollovers.pdf
+ */
+.modal-title {
+  font-weight: 400;
+  font-size: 20px; }
+
+.modal.fade.in .modal-dialog {
+  -webkit-transform: translate3d(0, 0, 0); }
+
+.modal-dialog .modal-content {
+  border-radius: 0;
+  font-size: 16px; }
+  .modal-dialog .modal-content .modal-header {
+    border-bottom: 1px solid #e9e9e9; }
+    .modal-dialog .modal-content .modal-header .close {
+      margin-top: 0;
+      line-height: normal;
+      outline: none; }
+
+.modal-dialog .pi-toast-container.pi-toasting {
+  top: 1px; }
+
+.modal-footer {
+  border-top: none;
+  text-align: center;
+  align-items: center; }
+  .modal-footer .spinner {
+    margin-right: 20px; }
+  .modal-footer .modal-error-message {
+    font-size: 10px;
+    text-align: left;
+    color: #f55753;
+    padding-left: 15px;
+    max-width: 300px; }
+  .modal-footer .modal-warning-message {
+    font-size: 10px;
+    text-align: left;
+    padding-left: 15px;
+    max-width: 300px; }
+  .modal-footer .modal-success-message {
+    font-size: 10px;
+    text-align: left;
+    color: #00b299;
+    padding-left: 15px; }
+  .modal-footer .mf-btn {
+    margin-left: 5px;
+    min-width: 110px; }
+  .modal-footer .btn {
+    min-width: 110px; }
+
+.modal-error-message-overlay {
+  font-size: 10px;
+  text-align: left;
+  color: #f55753; }
+
+.modal-content-container {
+  padding-left: 15px;
+  padding-right: 15px; }
+  .modal-content-container .modal-error-message {
+    margin-top: 5px;
+    color: #f55753; }
+
+.form-group.required > label:after {
+  content: "*";
+  color: #f55753; }
+
+pi-tags.remove-tag ul.pi-tags li.pi-tag .pi-tag-label {
+  color: #f55753; }
+
+pi-tags.remove-tag ul.pi-tags li.pi-tag:hover {
+  background-color: #f55753; }
+  pi-tags.remove-tag ul.pi-tags li.pi-tag:hover .pi-tag-label {
+    color: #fff; }

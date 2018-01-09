@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Geofences</title>
+
+    <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/bower_components/leaflet-dist/leaflet.css"/>
+    <link rel="stylesheet" href="/bower_components/leaflet.markercluster/dist/MarkerCluster.css"/>
+    <link rel="stylesheet" href="/bower_components/leaflet.markercluster/dist/MarkerCluster.Default.css"/>
+    <link rel="stylesheet" href="/styles/spinner.css">
+    <link rel="stylesheet" href="/styles/modal.css">
+    <link rel="stylesheet" href="/styles/table.css">
+    <link rel="stylesheet" href="/styles/button.css">
+    <link rel="stylesheet" href="/styles/style.css">
+    <script>
+        // define waitSeconds above require script tag
+        // to override the default, until main.js loads
+        window.require = {
+            waitSeconds: 60
+        };
+    </script>
+    <script data-main="/javascripts/main.js" src="/bower_components/requirejs/require.js"></script>
+</head>
+<body ng-controller="mainController" ng-init="init()">
+<div class="view geofences-container" id="geofencesMainView" style="display:none">
+
+    <div ng-if="errorMessage" class="alert alert-danger" style="position:absolute; width:100%; z-index: 1000;">
+        <a href="#" class="close" aria-label="close" ng-click="clearAlert()">&times;</a>
+        {{errorMessage}}
+    </div>
+
+    <div ng-if="infoMessage" class="alert alert-success" style="position:absolute; width:100%; z-index: 1000;">
+        <a href="#" class="close" aria-label="close" ng-click="clearAlert();">&times;</a>
+        {{infoMessage}}
+    </div>
+
+    <h1 class="stuck" id="header-primary">
+        Geofences
+			<span ng-show="isLoading" class="spinner-container">
+				<span class="spinner"></span>
+			</span>
+        <span ng-if="syncInProgress" class="glyphicon glyphicon-floppy-save" title="Save in progress"></span>
+        <span ng-if="watchSync && !syncInProgress" class="glyphicon glyphicon-floppy-saved" title="All is saved"></span>
+    </h1>
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-3">
+                <div>
+                    <div ng-if="!isLoading && geofenceList.length && !error" class="table-view-content">
+                        <div class="condensed-table-view">
+                            <table>
+                                <tr class="table-heading">
+                                    <th title="Name">Name</th>
+                                    <th></th>
+                                </tr>
+                            </table>
+                            <div id="geofencesListView">
+                                <table>
+                                    <tr ng-repeat="geofence in geofenceList" ng-click="selectGeofenceOnMap(geofence)">
+                                        <td data-label="Name">
+                                            <span ng-bind="geofence.properties.name"></span>
+                                        </td>
+                                        <td>
+                                            <div class="table-actions">
+                                                <button type="button" class="mf-btn mf-btn--default right-spacer icon"
+                                                        title="Delete Geofence" ng-click="showDeleteModal()">
+                                                    <span class="glyphicon glyphicon-trash icon"
+                                                          aria-hidden="true"></span>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div ng-if="isLoading">
+                    <div class="view-alert-content">
+                        <div class="view-alert-message">
+                            <span>Loading...</span>
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="error">
+                    <div class="view-alert-content">
+                        <div class="view-alert-message">
+                            <span>An error occured while loading the fences.</span>
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="!error && geofenceList.length === 0 && !isLoading">
+                    <div class="view-alert-content">
+                        <div class="view-alert-message">
+                            <span>There is no geofence yet</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="table-view-content">
+                    <table>
+                        <tr class="table-heading">
+                            <th>
+                                <span>Map</span>
+                            </th>
+                        </tr>
+                    </table>
+                </div>
+                <div ng-if="!geofenceMap || geofenceMap.getEditMode() !== geofenceMap.UPLOAD_MODE" class="btn-group" role="group" aria-label="...">
+                    <button id="addBtn" title="Add" type="button" class="btn btn-default" ng-click="setAddMode()"><span
+                            class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add geofence
+                    </button>
+                    <button id="uploadBtn" title="Upload fences" type="button" class="btn btn-default"
+                            ng-click="uploadFences()"><span class="glyphicon glyphicon-import"
+                                                            aria-hidden="true"></span> Import Geofences
+                    </button>
+                    <button id="exportBtn" title="Upload fences" type="button" class="btn btn-default"
+                            ng-click="exportFences()"><span class="glyphicon glyphicon-export"
+                                                            aria-hidden="true"></span> Export Geofences
+                    </button>
+                </div>
+                <div ng-if="geofenceMap && geofenceMap.getEditMode() === geofenceMap.UPLOAD_MODE" class="btn-group" role="group" aria-label="...">
+                    <button type="button" title="Undo" id="saveBtn" class="btn btn-default" ng-click="dataProxy.saveUpload()">
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Save Import
+                    </button><button type="button" title="Undo" id="saveBtn" class="btn btn-default" ng-click="dataProxy.cancelUpload()">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel Import
+                </button>
+                </div>
+                <div id="map">
+                    <div ng-click="geofenceMap.fitToContent()" class="fitToContent" title="Fit to content"></div>
+                </div>
+                <!--<div style="width:100%" aria-label="...">-->
+                <!--<div geoSearch>-->
+                <!--</div>-->
+                <!--</div>-->
+            </div>
+
+            <div class="col-xs-3">
+                <div class="table-view-content">
+                    <table>
+                        <tr class="table-heading">
+                            <th class="collapseable-header">
+                                <span title="Geofence details">Geofence details</span>
+                            </th>
+                        </tr>
+                    </table>
+                </div>
+                <form name="detailsForm">
+                    <!-- Text input-->
+                        <label ng-class="{'invalid-input-label':invalidName}">Name</label>
+                            <input id="name" type="text" title="Geofence name" class="form-control input-md"
+                                   ng-disabled="!dataProxy.selectedFence || !dataProxy.selectedFence.cloudantId || (geofenceMap.getEditMode() !== geofenceMap.EDIT_MODE)"
+                                   ng-model="dataProxy.selectedFence.attributes.name"
+                                   ng-change="onFormValueChange()"
+                                   data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="Please enter a non-empty name">
+
+                    <!-- Text input-->
+                        <label ng-class="{'invalid-input-label':invalidLatitude}">Latitude</label>
+                            <input id="latitude" type="number" step="0.001" min="-90" max="+90" type="text"
+                                   ng-disabled="!dataProxy.selectedFence || !dataProxy.selectedFence.cloudantId || (geofenceMap.getEditMode() !== geofenceMap.EDIT_MODE)"
+                                   title="Geofence latitude" class="form-control input-md"
+                                   ng-model="dataProxy.selectedFence.attributes.latLng.lat"
+                                   ng-change="onFormValueChange()"
+                                   data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="Please enter a number (min/max -90 to +90)">
+
+                    <!-- Text input-->
+                        <label ng-class="{'invalid-input-label':invalidLongitude}">Longitude</label>
+                            <input id="longitude" type="number" step="0.001" min="-180" max="+180" type="text"
+                                   ng-disabled="!dataProxy.selectedFence || !dataProxy.selectedFence.cloudantId || (geofenceMap.getEditMode() !== geofenceMap.EDIT_MODE)"
+                                   title="Geofence longitude" class="form-control input-md"
+                                   ng-model="dataProxy.selectedFence.attributes.latLng.lng"
+                                   ng-change="onFormValueChange()"
+                                   data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="Please enter a number (min/max -180 to +180)">
+
+                    <!-- Text input-->
+                        <label ng-class="{'invalid-input-label':invalidRadius}">Radius (meters)</label>
+                            <input id="radius" type="number" step="25" min="100" max="10000" type="text" title="Geofence radius"
+                                   class="form-control input-md"
+                                   ng-disabled="!dataProxy.selectedFence || !dataProxy.selectedFence.cloudantId || (geofenceMap.getEditMode() !== geofenceMap.EDIT_MODE)"
+                                   ng-model="dataProxy.selectedFence.attributes.radius"
+                                   ng-change="onFormValueChange()"
+                                   data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="Please enter a number (max/min 100 to 10.000)">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

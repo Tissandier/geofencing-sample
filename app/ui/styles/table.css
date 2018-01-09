@@ -1,0 +1,236 @@
+
+.table-view-content {
+    position: absolute;
+    max-width: 1400px;
+    margin: auto;
+    right: 0;
+    left: 0;
+    top: 0px;
+    font-weight: 400;
+    font-size: 16px;
+    color: #666;
+    line-height: 1.31;
+}
+
+.table-view-content .icon-button {
+    padding: 10px 12px;
+}
+
+.table-view-content .icon-button .icon {
+    height: 16px;
+    width: 16px;
+}
+
+.table-view-content .checkbox-column {
+    width: 16px;
+}
+
+.table-view-content .table-actions {
+    display: inline-block;
+    padding: 10px 0 10px 0;
+}
+
+.table-view-content .table-actions button {
+    padding: 10px 12px;
+}
+
+.table-view-content .collapseable {
+    display: table-cell;
+}
+
+.table-view-content table {
+    border: 1px solid #ccc;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.table-view-content table td {
+    border: 1px solid transparent;
+    border-bottom: 0;
+}
+
+.table-view-content table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table-view-content table tr:last-child td {
+    border-bottom: 1px solid transparent;
+}
+
+.table-view-content table tr:hover td {
+    border-top-color: #4178be;
+    border-bottom: 1px solid #4178be;
+}
+
+.table-view-content table tr:hover td:first-child {
+    border-left-color: #4178be;
+}
+
+.table-view-content table tr:hover td:last-child {
+    border-right-color: #4178be;
+}
+
+.table-view-content table th, .table-view-content table td {
+    padding: 10px;
+}
+
+.table-view-content table td:last-child {
+    text-align: right;
+    padding: 0;
+}
+
+.table-view-content table td:last-child button {
+    color: #4178be;
+}
+
+.table-view-content table td:last-child button:last-child {
+    margin-right: 5px;
+}
+
+.table-view-content table th {
+    font-size: 16px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    color: #325C80;
+    border-bottom: 1px solid #325C80;
+}
+
+@media (max-width: 700px) {
+    .table-view-content table {
+        border: 0;
+    }
+
+    .table-view-content table thead {
+        display: none;
+    }
+
+    .table-view-content table tr {
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-bottom: 10px;
+        display: block;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        margin-bottom: 5px;
+        margin-top: 5px;
+    }
+
+    .table-view-content table tr:last-child td {
+        border-bottom: 1px solid transparent;
+    }
+
+    .table-view-content table tr:hover td {
+        border: 1px solid transparent;
+    }
+
+    .table-view-content table tr:hover td:first-child {
+        border-left-color: transparent;
+    }
+
+    .table-view-content table tr:hover td:last-child {
+        border-bottom: 1px;
+        border-right-color: transparent;
+    }
+
+    .table-view-content table tr td:last-child {
+        border-top: 1px solid #ECF0F2;
+    }
+
+    .table-view-content table td {
+        display: block;
+        text-align: right;
+        font-size: 16px;
+        border-bottom: 1px solid transparent;
+        color: #808080;
+    }
+
+    .table-view-content table td:last-child {
+        border-bottom: 0;
+    }
+
+    .table-view-content table td:before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        font-size: 16px;
+        color: #4178be;
+    }
+
+    .table-view-content .table-heading {
+        display: none;
+    }
+
+    .table-view-content .table-actions {
+        display: inline-block;
+        padding: 5px 0 0 0;
+    }
+
+    .table-view-content .table-actions button {
+        color: #4178be;
+        padding: 10px 12px;
+    }
+
+    .table-view-content .collapseable {
+        display: none;
+    }
+}
+
+/* Table Filter */
+.table-filter {
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 220px;
+    z-index: 3;
+    margin: auto;
+    max-width: 1400px;
+    text-align: center;
+    height: 50px;
+    z-index: 3;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.table-filter pi-dropdown .text-button {
+    color: #3C4646;
+    border-bottom: #4178be 2px solid;
+}
+
+.table-filter pi-tag-picker {
+    margin-top: 5px;
+    color: #3C4646;
+}
+
+.table-filter pi-tag-picker .filter {
+    border-bottom: #4178be spx solid;
+}
+
+.table-filter pi-tag-picker .bm-glyphicon.bm-glyphicon-search {
+    color: #4178be;
+}
+
+.table-filter pi-input .input-container {
+    border-bottom: #4178be 2px solid;
+}
+
+.table-filter pi-input .input-container .clear-input {
+    color: #3C4646;
+}
+
+.table-filter .table-filter-item {
+    display: inline-block;
+    vertical-align: middle;
+    white-space: nowrap;
+    font-size: 14px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    letter-spacing: normal;
+    line-height: 20px;
+    position: relative;
+    margin-left: 10px;
+}

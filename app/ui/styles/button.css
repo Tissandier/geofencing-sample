@@ -1,0 +1,102 @@
+.mf-btn-group {
+    padding: 15px;
+    text-align: right;
+}
+
+.mf-btn {
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 10px 24px;
+    color: #fff;
+    cursor: pointer;
+    border: 0;
+    background: none;
+    display: inline-block;
+    transition: background 100ms ease;
+    border: 2px solid transparent;
+    text-decoration: none;
+}
+
+.mf-btn:hover, .mf-btn:focus {
+    text-decoration: none;
+}
+
+.mf-btn.mf-btn--small {
+    padding: .375rem 1.25rem;
+    border-width: 1px;
+}
+
+.mf-btn.mf-btn--default {
+    color: #444;
+    background: none;
+}
+
+.mf-btn.mf-btn--default:hover, .mf-btn.mf-btn--default:focus {
+    background-color: #ECF0F2;
+}
+
+.mf-btn.mf-btn--primary {
+    border-color: #DB2780;
+    background-color: #DB2780;
+}
+
+.mf-btn.mf-btn--primary:hover, .mf-btn.mf-btn--primary:focus {
+    border-color: #C02170;
+    background-color: #C02170;
+}
+
+.mf-btn.mf-btn--primary-alt {
+    border-color: #4178be;
+    background-color: #4178be;
+}
+
+.mf-btn.mf-btn--primary-alt:hover, .mf-btn.mf-btn--primary-alt:focus {
+    border-color: #3869A7;
+    background-color: #3869A7;
+}
+
+.mf-btn.mf-btn--secondary {
+    border-color: #DB2780;
+    color: #DB2780;
+}
+
+.mf-btn.mf-btn--secondary:hover, .mf-btn.mf-btn--secondary:focus {
+    border-color: #C02170;
+    color: #C02170;
+}
+
+.mf-btn.mf-btn--secondary-alt {
+    border-color: #4178be;
+    color: #4178be;
+}
+
+.mf-btn.mf-btn--secondary-alt:hover, .mf-btn.mf-btn--secondary-alt:focus {
+    border-color: #3869A7;
+    color: #3869A7;
+}
+
+.mf-btn.mf-btn--scale {
+    color: #444;
+    border-color: #ECF0F2;
+    background: none;
+}
+
+.mf-btn.mf-btn--scale:hover, .mf-btn.mf-btn--scale:focus {
+    border-color: #5A6464;
+    background-color: #ECF0F2;
+}
+
+.mf-btn.mf-btn--disabled, .mf-btn[disabled] {
+    border-color: #ECF0F2;
+    background-color: #ECF0F2;
+    color: #5A6464;
+    cursor: default;
+}
+
+.mf-btn.mf-btn--disabled:hover, .mf-btn.mf-btn--disabled:focus, .mf-btn[disabled]:hover, .mf-btn[disabled]:focus {
+    border-color: #ECF0F2;
+    background-color: #ECF0F2;
+    color: #5A6464;
+    cursor: default;
+}

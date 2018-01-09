@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "3C5F3A5B403979323EEF2A68C5A8B04B7344F014",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "CDEC560C8F8524BDABF7CA4056FD4CF8E80B793D" : 0,
+    "3C5F3A5B403979323EEF2A68C5A8B04B7344F014" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "733132E5-0B05-49E0-8464-7FB0E0066BDD",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "CDEC560C8F8524BDABF7CA4056FD4CF8E80B793D" : "MFGeofence\/",
+    "3C5F3A5B403979323EEF2A68C5A8B04B7344F014" : "geofencing-sample\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "MFGeofence",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "client-sdks\/ios\/MFGeofence.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.ibm.com:MobileFirst\/geofencing-sample.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3C5F3A5B403979323EEF2A68C5A8B04B7344F014"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.ibm.com:MobileFirst\/geofencing-sample.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "CDEC560C8F8524BDABF7CA4056FD4CF8E80B793D"
+    }
+  ]
+}

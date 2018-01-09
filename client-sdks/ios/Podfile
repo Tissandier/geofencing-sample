@@ -1,0 +1,20 @@
+# Uncomment this line to define a global platform for your project
+platform :ios, '9.0'
+
+
+workspace 'MFGeofence'
+project 'MFGeofence.xcodeproj'
+
+use_frameworks!
+
+target 'MFGeofence' do
+pod 'ZipArchive'
+pod 'CocoaLumberjack/Swift'
+project 'MFGeofence.xcodeproj'
+end
+
+
+target 'MFGeofenceSample' do
+pod 'MFGeofence', :path => '.'
+project 'MFGeofenceSample/MFGeofenceSample.xcodeproj'
+end

@@ -1,0 +1,25 @@
+<div class="modal-header">
+    <h3 class="modal-title">Upload geofences</h3>
+
+</div>
+<div class="modal-body panel-body">
+    <input type="file" accept=".geojson" id="file" name="file" filechange="toto" style="width:100%;"
+           class="btn-default btn"/>
+    <br/>
+    <div>
+        Default geofence name<br/>
+        <input type="text" style="width:100%;" ng-model="model.defaultGeofenceName">
+    </div>
+    <br/>
+    <div >
+        Default radius (in meters)<br/>
+        <input type="range" value="200" max="10000" min="100" step="10"  ng-model="model.defaultRadius">
+        <input type="number"  max="10000" min="100" step="10" style="width:100%;" ng-model="model.defaultRadius">
+    </div>
+    <br/>
+</div>
+<div class="modal-footer">
+    <div ng-if="showSpinner" class="spinner"></div>
+    <button ng-if="!showSpinner" class="btn btn-primary" ng-disabled="disableOK()" ng-click="uploadGeojson()">Upload</button>
+    <button ng-if="!showSpinner" class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>

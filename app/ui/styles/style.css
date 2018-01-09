@@ -1,0 +1,474 @@
+html {
+    overflow-y: scroll;
+}
+
+body {
+    margin: 0px;
+}
+
+#map {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 500px;
+    width: 100%;
+    background-color: #000
+}
+
+.hidden {
+    display: none;
+}
+
+.inputSpinner {
+    background: url(../images/spinner.gif) no-repeat scroll 7px 7px;
+    background-position: right center
+}
+
+#mapSpinnerDiv {
+    height: 100%;
+    width: 100%;
+    opacity: 1;
+    top: 0;
+    left: 0;
+    position: absolute;
+    padding: 0;
+    transition: opacity .5s;
+    z-index: 10;
+    pointer-events: none;
+}
+
+#mapSpinner {
+    margin: 217px auto;
+    background: url(../images/mapspinner.png);
+    animation: play 0.8s steps(19) infinite;
+    height: 66px;
+    width: 66px;
+    position: relative;
+    pointer-events: none;
+}
+
+@keyframes play {
+    100% {
+        background-position: 0px -1254px;
+    }
+}
+
+.fade.ng-enter {
+    transition: 0.5s linear all;
+    opacity: 0;
+}
+
+/* The finishing CSS styles for the enter animation */
+.fade.ng-enter.ng-enter-active {
+    opacity: 1;
+}
+
+.leaflet-top {
+    display: none;
+}
+
+.fitToContent {
+    width: 36px;
+    height: 36px;
+    border-radius: 100%;
+    border-bottom: 1px solid #ddd;
+    background: #ffffff url(../images/fit-to-content.png) no-repeat center center;
+    position: absolute;
+    bottom: 148px;
+    right: 20px;
+    z-index: 10;
+    cursor: pointer;
+    outline: none;
+}
+
+.fitToContent:hover {
+    background-color: #f4f4f4;
+}
+
+.leaflet-control-zoom-in {
+    font-size: 18px;
+    line-height: 34px;
+}
+
+.leaflet-control-zoom-out {
+    font-size: 18px;
+    line-height: 34px;
+}
+
+.leaflet-bar a, .leaflet-bar a:hover {
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+}
+
+.leaflet-draw-toolbar .leaflet-draw-draw-beacon {
+    background-position: -118px 1px;
+}
+
+.leaflet-draw-toolbar .leaflet-draw-draw-sensor {
+    background-position: -148px 1px;
+}
+
+.leaflet-draw-toolbar .leaflet-draw-draw-rectangle {
+    background-position: -58px 1px;
+}
+
+.leaflet-draw-toolbar .leaflet-draw-edit-edit {
+    background-position: -177px 2px;
+}
+
+.leaflet-draw-toolbar .leaflet-draw-edit-edit.leaflet-disabled {
+    background-position: -237px 2px;
+}
+
+.leaflet-draw-toolbar .leaflet-draw-edit-remove {
+    background-position: -208px 2px;
+}
+
+.leaflet-draw-toolbar .leaflet-draw-edit-remove.leaflet-disabled {
+    background-position: -267px 2px;
+}
+
+.leaflet-draw-actions {
+    left: 36px;
+}
+
+.leaflet-draw-actions-top a, .leaflet-draw-actions-bottom a {
+    height: 27px;
+    line-height: 27px;
+}
+
+.leaflet-draw-actions a {
+    line-height: 36px;
+    height: 36px;
+}
+
+/* ================================================================== */
+/* New Buttons for Toolbar
+/* ================================================================== */
+.leaflet-retina .leaflet-draw-toolbar a {
+    display: inline-block;
+}
+
+.leaflet-draw-toolbar {
+    display: inline-block;
+}
+
+.leaflet-draw-section {
+    display: inline-block;
+}
+
+.leaflet-bar a {
+    border-radius: 50px;
+    margin: 5px;
+}
+
+.leaflet-bar {
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.leaflet-bar a:last-child {
+    border-radius: 50px;
+    border-bottom: 1px solid #ddd;
+}
+
+.leaflet-bar a:first-child {
+    border-radius: 50px;
+    border-bottom: 1px solid #ddd;
+}
+
+.leaflet-left .leaflet-control {
+    margin: 0;
+}
+
+.leaflet-right .leaflet-control {
+    margin: 10px;
+    box-shadow: none;
+}
+
+.leaflet-container a {
+    margin: 10px;
+}
+
+.leaflet-control-layers {
+    box-shadow: none;
+    background: none;
+    border-radius: 0;
+}
+
+.geofences-container h1 .spinner-container {
+    display: inline-block;
+}
+
+.geofences-container h1 .spinner-container .spinner {
+    font-size: 0.5em;
+}
+
+.geofences-container .header-buttons-container {
+    position: fixed;
+    top: 170px;
+    right: 15px;
+    z-index: 3;
+}
+
+.geofences-container .header-buttons-container .undo-btn, .geofences-container .header-buttons-container .redo-btn {
+    width: 18px;
+    height: 18px;
+    background: url(../images/geofence/undo.png) no-repeat center center;
+    display: block;
+}
+
+@media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+    .geofences-container .header-buttons-container .undo-btn, .geofences-container .header-buttons-container .redo-btn {
+        background-image: url("../images/geofence/undo@2x.png");
+        background-size: 16px 16px;
+    }
+}
+
+.geofences-container .header-buttons-container .redo-btn {
+    background-image: url(../images/geofence/redo.png);
+}
+
+@media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+    .geofences-container .header-buttons-container .redo-btn {
+        background-image: url("../images/geofence/redo@2x.png");
+        background-size: 16px 16px;
+    }
+}
+
+.geofences-container .header-buttons-container .glyphicon-floppy-save, .geofences-container .header-buttons-container .glyphicon-floppy-saved {
+    font-size: 1rem;
+    color: #00b299;
+}
+
+.geofences-container .header-buttons-container .glyphicon-floppy-saved {
+    color: #C0E6FF;
+}
+
+.geofences-container .header-buttons-container button {
+    margin-top: -8px;
+}
+
+.geofences-container .header-buttons-container .map-save, .geofences-container .header-buttons-container .map-save span {
+    border-color: #ef4e38;
+    background: #ef4e38;
+    color: #fff;
+}
+
+.geofences-container .header-buttons-container .map-save:hover, .geofences-container .header-buttons-container .map-save:focus, .geofences-container .header-buttons-container .map-save:hover span, .geofences-container .header-buttons-container .map-save:focus span, .geofences-container .header-buttons-container .map-save span:hover, .geofences-container .header-buttons-container .map-save span:focus, .geofences-container .header-buttons-container .map-save span:hover span, .geofences-container .header-buttons-container .map-save span:focus span {
+    border-color: #ef4e38;
+    background: none;
+    color: #ef4e38;
+}
+
+.geofences-container .geofence-overlay {
+    height: 100%;
+    width: 100%;
+    background-color: #fff;
+    opacity: 0.5;
+    position: fixed;
+    z-index: 20;
+}
+
+.table-filter .geofences-container .geofence-overlay {
+    height: 80px;
+}
+
+.geofences-container .table-view-content {
+    position: static;
+}
+
+.geofences-container .table-view-content .table-heading {
+    cursor: default;
+}
+
+.geofences-container .table-view-content .table-heading .collapseable-header {
+    cursor: pointer;
+}
+
+.fade.ng-enter {
+    transition: 0.5s linear all;
+    opacity: 0;
+}
+
+/* The finishing CSS styles for the enter animation */
+.fade.ng-enter.ng-enter-active {
+    opacity: 1;
+}
+
+.form-style {
+    margin: 0;
+    padding: 2px 0;
+}
+
+.keep-white-background, .keep-white-background:disabled {
+    background-color: #fff;
+}
+
+.margin-top-15 {
+    margin-top: 15px;
+}
+
+.search-bar {
+    width: 100%;
+}
+
+.search-bar ul {
+    width: 100%;
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.search-bar .spinner-container {
+    position: absolute;
+    z-index: 100;
+    right: 15px;
+    top: 16px;
+}
+
+#geofencesListView {
+    height: 534px;
+    overflow-y: auto;
+}
+
+#geofencesListView table {
+    border: 0;
+}
+
+#geofencesListView table tr {
+    outline: none;
+}
+
+#geofencesListView table tr.selected-row {
+    background-color: #C0E6FF;
+}
+
+@media (min-width: 701px) {
+    #geofencesListView table tr:first-child td {
+        border-top: 0;
+    }
+}
+
+#geofencesListView table td {
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@media (min-width: 701px) {
+    .condensed-table-view th, .condensed-table-view td, .full-table-view th, .full-table-view td {
+        width: 20%;
+    }
+
+    .condensed-table-view th:first-child, .condensed-table-view td:first-child, .full-table-view th:first-child, .full-table-view td:first-child {
+        width: 91%;
+    }
+
+    .condensed-table-view th:last-child, .condensed-table-view td:last-child, .full-table-view th:last-child, .full-table-view td:last-child {
+        width: 9%;
+    }
+
+    .full-table-view th:first-child, .full-table-view td:first-child {
+        width: 23%;
+    }
+
+    .full-table-view th:last-child, .full-table-view td:last-child {
+        width: 17%;
+    }
+}
+
+.geofence-map {
+    width: 100%;
+    height: 500px;
+    margin: 0 auto;
+    background-color: #1b252d;
+    display: block;
+}
+
+.spinner-container {
+    display: flex;
+    justify-content: center; }
+
+
+.geofence-map .fitToContent {
+    width: 36px;
+    height: 36px;
+    border-radius: 100%;
+    border-bottom: 1px solid #ddd;
+    background: #ffffff url(../images/geofence/fit-to-content.png) no-repeat center center;
+    position: absolute;
+    bottom: 148px;
+    right: 20px;
+    z-index: 10;
+    cursor: pointer;
+    outline: none;
+}
+
+@media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+    .geofence-map .fitToContent {
+        background-image: url("../images/geofence/fit-to-content@2x.png");
+        background-size: 16px 16px;
+    }
+}
+
+.geofence-map .fitToContent:hover {
+    background-color: #f4f4f4;
+}
+
+.geofence-map .leaflet-top {
+    display: none;
+}
+
+.geofence-map .leaflet-control-container .leaflet-left {
+    left: 370px;
+}
+
+.mf-field.spaced-div, .spaced-div {
+    margin-top: 4rem;
+}
+
+.view-alert-content {
+    position: relative;
+    height: 100%;
+    padding-left: 38px;
+    padding-top: 200px;
+}
+
+.view-alert-content.view-alert-content-condensed {
+    padding-left: 0;
+    padding-top: 73px;
+}
+
+.view-alert-content .view-alert-message {
+    font-size: 2em;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.view-alert-content .view-alert-button {
+    padding-top: 10px;
+    font-size: 2em;
+    text-align: center;
+}
+
+.glyphicon-floppy-save, .glyphicon-floppy-saved {
+    font-size: 2rem;
+    color: #00b299;
+}
+
+.glyphicon-floppy-saved {
+    color: #C0E6FF;
+}
+
+.invalid-input-label {
+    color: red;
+}

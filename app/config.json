@@ -1,0 +1,15 @@
+{
+  "cloudantUsername": "",
+  "cloudantPassword": "",
+  "username": "demo",
+  "password": "demo",
+
+  "mqlight" : {
+    "credentials": {
+      "password": "",
+      "connectionLookupURI": "",
+      "username": ""
+    }
+  }
+
+}
